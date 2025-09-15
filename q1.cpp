@@ -23,7 +23,7 @@ int main() {
         cin >> choice;
 
         switch (choice) {
-            case 1: { 
+            case 1: {
                 if ((int)qu.size() < size) {
                     int numPush;
                     cout << "Enter the number to add to queue: ";
@@ -35,7 +35,7 @@ int main() {
                 }
                 break;
             }
-            case 2: {
+            case 2: { 
                 if (!qu.empty()) {
                     cout << "Removed " << qu.front() << " from the queue";
                     qu.pop();
@@ -52,7 +52,7 @@ int main() {
                 }
                 break;
             }
-            case 4: {
+            case 4: { 
                 if ((int)qu.size() == size) {
                     cout << "The queue is full";
                 } else {
@@ -60,12 +60,12 @@ int main() {
                 }
                 break;
             }
-            case 5: {
+            case 5: { 
                 if (qu.empty()) {
                     cout << "Queue is empty!";
                 } else {
                     cout << "Queue elements: ";
-                    queue<int> temp = qu; 
+                    queue<int> temp = qu;
                     while (!temp.empty()) {
                         cout << temp.front() << " ";
                         temp.pop();
@@ -73,7 +73,7 @@ int main() {
                 }
                 break;
             }
-            case 6: { 
+            case 6: {
                 if (qu.empty()) {
                     cout << "Queue is empty!";
                 } else {
@@ -82,11 +82,11 @@ int main() {
                 break;
             }
             case 7:
-                cout << "Exiting!";
+                cout << "Exiting! ";
                 return 0;
 
             default:
-                cout << "Invalid choice. Try again!";
+                cout << "Invalid code. Try again!";
                 break;
         }
     }

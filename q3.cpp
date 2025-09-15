@@ -1,53 +1,51 @@
-#include<iostream>
+
+#include <iostream>
+#include <queue>
 using namespace std;
 
-struct Node{
-  int data;
-  Node* next;
-};
-void insertAtEnd(Node* &head,int value){
-  Node* newNode = new Node{value,nullptr};
-  if (head == nullptr)
-  {
-    head = newNode;
-    return;
-  }
-  Node* temp = head;
-  while (temp->next!=nullptr)
-  {
-    temp = temp->next;
-  }
-  temp->next = newNode;
-}
-
-int findMid(Node* &head){
-
-  int count = 0;
-  Node* temp = head;
-  while (temp!=nullptr)
-  {
-    count++;
-    temp = temp->next;
-  }
-  temp = head;
-  for (int i = 0; i < count/2; i++)
-  {
-    temp = temp->next;
-  }
-  return temp->data;
-
-}
-
 int main(){
-  Node* head = nullptr;
-  insertAtEnd(head, 5);
-  insertAtEnd(head, 10);
-  insertAtEnd(head, 20);
-  insertAtEnd(head, 124);
-  insertAtEnd(head, 3);
-  insertAtEnd(head, 34);
-  insertAtEnd(head, 345);
-cout << findMid(head);
 
-return 0;
+    queue<int> qu;
+    int arr[]={4,7,11,20,5,9};
+
+    int n=sizeof(arr)/sizeof(arr[0]);
+
+    for(int i=0;i<n;i++){
+        qu.push(arr[i]);
+    }
+    queue<int> temp;
+    temp=qu;
+
+    cout<<"Original queue: ";
+    for(int i=0;i<n;i++){
+        cout<<temp.front()<<" ";
+        temp.pop();
+    }
+
+    temp=qu;
+    queue<int> newqu;
+
+    for(int i=0;i<n/2;i++){
+        temp.pop();
+    }
+    queue<int> temp1=qu;
+
+    for(int i=0;i<n;i++){
+        if(i%2==0){
+            newqu.push(temp1.front());
+            temp1.pop();
+        }
+        else{
+            newqu.push(temp.front());
+            temp.pop();
+        }
+    }
+    queue<int> temp2=newqu;
+
+    cout<<"\nNew queue: ";
+    for(int i=0;i<n;i++){
+        cout<<temp2.front()<<" ";
+        temp2.pop();
+    }
+    return 0;
 }

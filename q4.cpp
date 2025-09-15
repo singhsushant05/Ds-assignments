@@ -1,61 +1,28 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 
-struct Node
-{
-    int data;
-    Node* next;
-};
-void insert(Node* &head,int value){
-
- Node* newNode = new Node{value,nullptr};
- if (!head)
- {
-   head = newNode;
-   return;
- }
- Node* temp = head;
-    while (temp->next) {   
-        temp = temp->next;
-    }
-    temp->next = newNode; 
-}
-void displayList(Node* head) {
-    Node* temp = head;
-    while (temp != nullptr) {
-        cout << temp->data << " ";
-        temp = temp->next;
-    }
-    cout << endl;
-}
-void revLinkedL(Node* &head){
-    Node* prev = nullptr;
-    Node* curr = head;
-    Node* next = nullptr;
-    
-    while (curr)
-    {
-        next = curr->next;
-        curr->next = prev;
-        prev = curr;
-        curr = next;
-    }
-    head = prev;
-}
 int main(){
-  Node* head = nullptr;
-  insert(head, 5);
-  insert(head, 10);
-  insert(head, 20);
-  insert(head, 124);
-  insert(head, 3);
-  insert(head, 34);
-  insert(head, 345);
 
-displayList(head);
+    int freq[26] = {0};
+    queue<char> qu;
+    char arr[]={'a','a','b','c'};
 
-revLinkedL(head);
-displayList(head);
+    int size=sizeof(arr)/sizeof(arr[0]);
 
-return 0;
+    for(int i=0;i<size;i++){
+        char ch=arr[i];
+        freq[ch-'a']++;
+        qu.push(ch);
+        while(freq[qu.front()-'a']>1){
+            qu.pop();
+        }
+        if(qu.empty()){
+            cout<<-1<<" ";
+        }
+        else{
+        cout<<qu.front()<<" ";
+        }
+    }
+    return 0;
 }
